@@ -1,9 +1,17 @@
-// MODULES
-const john = 'John';
-const peter = 'Peter';
+// required
 
-const sayHi = (name) => console.log(`Hello there ${name}`);
+// way 1
+// const names = require('./2-names');
+// way 2
+const { john, peter, thu } = require('./2-names');
+const sayHi = require('./3-utils');
 
+// way 1
+// sayHi(names.john);
+// sayHi(names.peter);
+
+// way 2
 sayHi(john);
 sayHi(peter);
+sayHi(thu);
 sayHi('Susan');
