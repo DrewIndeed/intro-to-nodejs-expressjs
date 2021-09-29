@@ -15,3 +15,7 @@ sayHi(john);
 sayHi(peter);
 sayHi(thu);
 sayHi('Susan');
+
+// alternative 
+const data = require('./4-alternative-flavor');
+console.log(data);
