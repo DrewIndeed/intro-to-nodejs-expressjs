@@ -19,3 +19,6 @@ sayHi('Susan');
 // alternative 
 const data = require('./4-alternative-flavor');
 console.log(data);
+
+// mind-grenade
+require('./5-mind-grenade');
