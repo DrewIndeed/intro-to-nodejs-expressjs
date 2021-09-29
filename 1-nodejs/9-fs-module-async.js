@@ -1,6 +1,7 @@
 // using ASYNCHRONOUS methods from fs module
 const { readFile, writeFile } = require("fs");
 
+console.log("start async");
 readFile("./content/first.txt", "utf8", (error, result) => {
   if (error) {
     console.log(error);
@@ -26,3 +27,4 @@ readFile("./content/first.txt", "utf8", (error, result) => {
     );
   });
 });
+console.log("starting next task...");

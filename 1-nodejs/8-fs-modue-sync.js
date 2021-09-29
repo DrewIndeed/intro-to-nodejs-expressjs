@@ -1,6 +1,7 @@
 // using SYNCHRONOUS methods from fs module
 const { readFileSync, writeFileSync } = require("fs");
 
+console.log("start sync")
 // reading files content
 const first = readFileSync("./content/first.txt", "utf8");
 const second = readFileSync("./content/second.txt", "utf8");
@@ -13,4 +14,6 @@ console.log(second);
 writeFileSync("./content/result-sync.txt", `Result: ${first}, ${second}`);
 
 //2. Append the content
-writeFileSync("./content/result-sync.txt", `, Appended contents`, {flag: 'a'});
+writeFileSync("./content/result-sync.txt", `, Appended contents`, { flag: 'a' });
+console.log("done with sync tasks");
+console.log("starting next task...")
