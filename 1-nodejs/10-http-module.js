@@ -1,9 +1,18 @@
-const http = require('http');
+const http = require("http");
 
 const server = http.createServer((request, response) => {
-    console.log(request);
-    response.write('Welcome back my dear friend');
-    response.end();
+  // jump to different pages on our website
+  if (request.url === "/") {
+    response.end("Welcome to home page");
+  } else if (request.url === "/about") {
+    response.end("Welcome to about page");
+  } else {
+    // default handler to handle error is user trying to access something not exist
+    response.end(`
+    <h1>404 NOT FOUND!</h1>
+    <a href='/'>Back to Home page</a>
+    `);
+  }
 });
 
 server.listen(5000); //localhost:5000
