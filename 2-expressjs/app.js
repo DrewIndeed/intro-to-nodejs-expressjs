@@ -1,38 +1,20 @@
-const http = require("http");
-const { readFileSync } = require("fs");
+const ep = require("express");
+const path = require("path");
+const app = ep();
 
-const home = readFileSync("./navbar-app/index.html");
-const homeStyle = readFileSync("./navbar-app/styles.css");
-const homeImage = readFileSync("./navbar-app/logo.svg");
-const homeLogic = readFileSync("./navbar-app/browser-app.js");
+// handle the PAIN
+app.use(ep.static("./public"));
 
-const server = http.createServer((req, res) => {
-  const url = req.url;
-  if (url === "/") {
-    res.writeHead(200, { "content-type": "text/html" });
-    res.write(home);
-    res.end();
-  } else if (url === "/styles.css") {
-    res.writeHead(200, { "content-type": "text/css" });
-    res.write(homeStyle);
-    res.end();
-  } else if (url === "/logo.svg") {
-    res.writeHead(200, { "content-type": "image/svg+xml" });
-    res.write(homeImage);
-    res.end();
-  } else if (url === "/browser-app.js") {
-    res.writeHead(200, { "content-type": "text/javascript" });
-    res.write(homeLogic);
-    res.end();
-  } else if (url === "/about") {
-    res.writeHead(200, { "content-type": "text/html" });
-    res.write("<h1>About Page</h1>");
-    res.end();
-  } else {
-    res.writeHead(404, { "content-type": "text/html" });
-    res.write("<h1>Page Not Found</h1>");
-    res.end();
-  }
+// get resouces
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./navbar-app/index.html"));
 });
 
-server.listen(5000);
+// handle 404 Not Found
+app.all("*", (req, res) => {
+  res.status(404).send("Resource Not Found");
+});
+
+app.listen(5000, () => {
+  console.log("Listening on port 5000...");
+});
